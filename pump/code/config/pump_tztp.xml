@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parms>
+   <!--  drive file for tztp infusions -->
+   <!--  -->
+   <!--  kbol was 120 in first attemp -->
+   <!-- kbol=="60"     second attempt -->
+   <config>
+      <diam>19.13</diam>     <!--  B.D. -->
+      <syringe_name>20 cc BD  syringe</syringe_name>
+      <dose_warning>10</dose_warning>     <!--  greater than  this dose assayed yields warning -->
+      <minvol_warning>12</minvol_warning>     <!--  get warning if entered vol is  less than  this -->
+      <maxvol_warning>20</maxvol_warning>     <!--  get warning if entered vol is  greater than  this -->
+      <kbol>150</kbol>
+      <tbolus>1</tbolus>
+      <tdef>240</tdef>
+      <tmin>110</tmin>
+      <tmax>300</tmax>
+      <desired_def>5</desired_def>
+      <desired_warning>5</desired_warning>     <!--  greater than  this dose requested yields warning -->
+      <rmax>13.6</rmax>     <!-- max speeed for this diameter -->
+      <time_warning>20</time_warning>     <!--  greater than  this time difference between assay and data entry -->
+      <dec>1</dec>
+      <hl>109.8</hl>
+   </config>
+   <user>
+      <room>nmgeroom2</room>
+      <ds>0.6</ds>
+      <t>90</t>
+   </user>
+
+</parms>

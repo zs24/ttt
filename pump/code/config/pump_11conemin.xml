@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parms>
+   <!--  drive file for generic carbon study with 1 minute infusion -->
+   <!--  2006-05-10 cf - adapted from pump_tsflum.xml -->
+   <config>
+      <diam>19.98</diam>     <!-- 2001-05-02 -->
+      <syringe_name>20 cc Monoject syringe</syringe_name>
+      <dose_warning>55</dose_warning>     <!--  greater than  this dose assayed yields warning -->
+      <minvol_warning>1</minvol_warning>     <!--  get warning if entered vol is  less than  this -->
+      <maxvol_warning>20</maxvol_warning>     <!--  get warning if entered vol is  greater than  this -->
+      <kbol>0</kbol>
+      <tbolus>0</tbolus>
+      <tdef>1.0</tdef>
+      <tmin>0.10</tmin>
+      <tmax>2</tmax>
+      <desired_def>20</desired_def>
+      <desired_warning>20</desired_warning>     <!--  greater than  this dose requested yields warning -->
+      <mass_check>1</mass_check>
+      <rmax>15.5</rmax>
+      <time_warning>20</time_warning>     <!--  greater than  this time difference between assay and data entry -->
+      <dec>1</dec>
+      <hl>20.38</hl>
+   </config>
+   <user>
+      <room>nmgeroom2</room>
+      <ds>0.50</ds>
+      <t>1.0</t>
+   </user>
+
+</parms>

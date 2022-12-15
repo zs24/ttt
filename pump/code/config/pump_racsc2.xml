@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parms>
+   <!--  pump_racsc2.com -->
+   <!--  drive file for raclopride in the sc2 -->
+   <!--  -->
+   <config>
+      <diam>19.13</diam>     <!--  B.D. -->
+      <syringe_name>20 cc BD syringe</syringe_name>
+      <dose_warning>40</dose_warning>     <!--  greater than  this dose assayed yields warning -->
+      <minvol_warning>12</minvol_warning>     <!--  get warning if entered vol is  less than  this -->
+      <maxvol_warning>20</maxvol_warning>     <!--  get warning if entered vol is  greater than  this -->
+      <dsdef>.6</dsdef>
+      <kbol>60</kbol>
+      <tbolus>1</tbolus>
+      <tdef>120</tdef>
+      <tmin>90</tmin>
+      <tmax>140</tmax>
+      <desired_def>6</desired_def>
+      <desired_warning>6</desired_warning>     <!--  greater than  this dose requested yields warning -->
+      <mass_check>1</mass_check>
+      <rmax>13.6</rmax>     <!-- max speeed for this diameter -->
+      <time_warning>20</time_warning>     <!--  greater than  this time difference between assay and data entry -->
+      <dec>1</dec>
+      <hl>20.38</hl>
+   </config>
+   <user>
+      <room>nmsc2room</room>
+      <ds>0.6</ds>
+   </user>
+
+</parms>

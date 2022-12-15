@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parms>
+   <!--  drive file for pump_nh3 -->
+   <!--  -->
+   <!--   3/10/99 It seemed that the Monkject syringes were really narrower -->
+   <!--   long infusions failed to deliver the proper volume. -->
+   <!--  Margaret Der contacted Monkject: -->
+   <!--   The rep. for the Monoject syringes just called (after several more phone -->
+   <!--   messages) and said the diameter for the 20 cc Monoject syringe was 0.787 -->
+   <!--    inches.  This calculates to 19.98 mm. -->
+   <!--      Harvard pumps published number is 20.4 mm -->
+   <!--  In tracking the first 16 NH3 doses in 1999, the desired dose was 5 mCi, and -->
+   <!--   the calculated delivered dose was 5.01 +/- .16 -->
+   <!--   "Correcting" the diameter to 19.98 would increase the delivery by -->
+   <!--   (20.4/19.98)#2 or  4 % or from 5.0 to 5.2 mCi -->
+   <!--  Somewhere in this measurement system we are making some errors. We are -->
+   <!--   specifying the deadspace as 0.5 ml when it is at least 0.6 ml. We are also -->
+   <!--   post-counting a large portion of the activity for the 5 mCi injections. -->
+   <!--  Therefore, we will continue to use the WRONG diameter, so that the final -->
+   <!--   delivered dose remains correct. -->
+   <!-- ds=="0.6"     !8/1/95 -->
+   <config>
+      <diam>20.4</diam>
+      <syringe_name>20 cc Monoject syringe</syringe_name>
+      <dose_warning>40</dose_warning>     <!--  greater than  this dose assayed yields warning -->
+      <minvol_warning>12</minvol_warning>     <!--  get warning if entered vol is  less than  this -->
+      <maxvol_warning>20</maxvol_warning>     <!--  get warning if entered vol is  greater than  this -->
+      <prompt_ds>1</prompt_ds>
+      <kbol>0</kbol>
+      <tbolus>0</tbolus>
+      <tdef>0.5</tdef>
+      <tmin>0.5</tmin>
+      <tmax>3</tmax>
+      <desired_def>0</desired_def>
+      <desired_warning>0</desired_warning>     <!--  greater than  this dose requested yields warning -->
+      <rmax>15.5</rmax>
+      <time_warning>20</time_warning>     <!--  greater than  this time difference between assay and data entry -->
+      <dec>1</dec>
+      <hl>9.98</hl>
+   </config>
+   <user>
+      <room>nmgeroom2</room>
+      <ds>0.5</ds>     <!-- 4/20/98 -->
+      <t>0.5</t>     <!-- 30 sec injection -->
+   </user>
+
+</parms>

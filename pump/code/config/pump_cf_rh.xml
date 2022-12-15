@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parms>
+   <!--  pump_cf_rh.com drive file for cyclofoxy for rhesus -->
+   <!--  -->
+   <!-- diam=="20.4" -->
+   <!-- ds=="1.0"     !2 interlink connectors -->
+   <config>
+      <diam>19.98</diam>  <!-- corrected 12/20/99 -->
+      <syringe_name>20 cc monoject syringe</syringe_name>
+      <dose_warning>15</dose_warning>     <!--  greater than  this dose assayed yields warning -->
+      <minvol_warning>12</minvol_warning>     <!--  get warning if entered vol is  less than  this -->
+      <maxvol_warning>20</maxvol_warning>     <!--  get warning if entered vol is  greater than  this -->
+      <prompt_ds>1</prompt_ds>
+      <kbol>150</kbol>
+      <tbolus>1</tbolus>
+      <tdef>240</tdef>
+      <tmin>110</tmin>
+      <tmax>300</tmax>
+      <desired_def>-1</desired_def>     <!-- def=all -->
+      <desired_warning>10</desired_warning>     <!--  greater than  this dose requested yields warning -->
+      <inject_all_dose>1</inject_all_dose>     <!-- permitted to inject all dose - for monkey only! -->
+      <rmax>15.5</rmax>     <!-- max speeed for this diameter -->
+      <time_warning>20</time_warning>     <!--  greater than  this time difference between assay and data entry -->
+      <dec>1</dec>
+      <hl>109.8</hl>
+   </config>
+   <user>
+      <room>nmgeroom2</room>
+      <ds>0.5</ds>     <!-- interlink connector ? -->
+   </user>
+
+</parms>

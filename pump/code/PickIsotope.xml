@@ -1,0 +1,10 @@
+<isotopes>
+   <!--Need local copy of halflives to maintain network independence-->
+   <!--halflives are given in minutes-->
+   <F-18>109.8</F-18>
+   <C-11>20.38</C-11>
+   <N-13>9.96</N-13>
+   <O-15>122.2</O-15>
+   <BR-76>960.0</BR-76>
+   <default>F-18</default>
+</isotopes>

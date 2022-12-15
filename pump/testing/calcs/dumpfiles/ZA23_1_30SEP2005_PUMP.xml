@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<parms>
+   <config>
+      <diam>19.98</diam>
+      <rmax>59.78101</rmax>
+      <tbolus>0</tbolus>
+      <hl>20.38</hl>
+      <tdef>1</tdef>
+      <tmin>.5</tmin>
+      <tmax>3</tmax>
+      <kbol>0</kbol>
+      <prompt_ds>1</prompt_ds>
+      <mass_check>1</mass_check>
+      <inject_all_dose>0</inject_all_dose>
+      <desired_def>0</desired_def>
+      <desired_warning>0</desired_warning>
+      <dose_warning>40</dose_warning>
+      <time_warning>20</time_warning>
+      <minvol_warning>12</minvol_warning>
+      <maxvol_warning>20</maxvol_warning>
+   </config>
+   <user>
+      <ds>.5</ds>
+      <t>1</t>
+      <desired>10</desired>
+      <dose0>14</dose0>
+      <time0>10:6:50</time0>
+      <vtot>10</vtot>
+      <max_vol_mass>10</max_vol_mass>
+      <systime>10:13:27</systime>
+      <injtime>10:13:28.80078</injtime>
+   </user>
+   <vax_calc>
+      <frac>.9831858</frac>
+      <vol>9.098509</vol>
+      <dose_inj>11.16737</dose_inj>
+      <dose_predicted>9.989799</dose_predicted>
+      <rem_vol>.4014921</rem_vol>
+   </vax_calc>
+   <vax_profile>
+      <time2>1.033333</time2>
+      <time1>.03333334</time1>
+      <rate2>9.098509</rate2>
+      <rate1>15</rate1>
+   </vax_profile>
+</parms>

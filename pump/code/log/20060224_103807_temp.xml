@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parms>
+   <config>
+      <mass_check>false</mass_check>
+      <hl>109.8</hl>
+      <desired_min_error>0.0</desired_min_error>
+      <time_warning>20.0</time_warning>
+      <kbol>0.0</kbol>
+      <prompt_ds>true</prompt_ds>
+      <min_ds_rate>15.0</min_ds_rate>
+      <tbolus>0.0</tbolus>
+      <diam>0.0</diam>
+      <dose_min_error>0.0</dose_min_error>
+      <rmax>0.0</rmax>
+   </config>
+   <user>
+      <res_time>00:00:00</res_time>
+      <injtime>00:00:00</injtime>
+      <ds/>
+      <t/>
+      <XMLout>/home/gepet3a/operator/nih/pump/log/20060224_103807_temp.xml</XMLout>
+      <time0>00:00:00</time0>
+   </user>
+</parms>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parms>
+   <!--  drive file for pump_dasb_onemin -->
+   <!--  -->
+   <!-- write sys$output "***Make sure you use ONE extension with 0.5 dead space***" -->
+   <!--  -->
+   <!--  2001-05-02 R C - Since early April 2001, suddenly 5 mCi doses are low- -->
+   <!--      3.5-4 mCi instead of ~ 5 mCi. Cannot find good explanation. -->
+   <!--      Cyclotron will now deliver less activity (~15 mCi)  so inject a -->
+   <!--      bigger fraction and post-counts are lower.  So, we will now stop -->
+   <!--      lying to the pump program, i.e., will say 0.6 ml deadspace and -->
+   <!--      say diameter is 19.98 mm, not 20.4 -->
+   <!--  -->
+   <!--  -->
+   <!--   3/10/99 It seemed that the Monoject syringes were really narrower -->
+   <!--   long infusions failed to deliver the proper volume. -->
+   <!--  Margaret Der contacted Monoject: -->
+   <!--   The rep. for the Monoject syringes just called (after several more phone -->
+   <!--   messages) and said the diameter for the 20 cc Monoject syringe was 0.787 -->
+   <!--    inches.  This calculates to 19.98 mm. -->
+   <!--      Harvard pumps published number is 20.4 mm -->
+   <!--  In tracking the first 16 NH3 doses in 1999, the desired dose was 5 mCi, and -->
+   <!--   the calculated delivered dose was 5.01 +/- .16 -->
+   <!--   "Correcting" the diameter to 19.98 would increase the delivery by -->
+   <!--   (20.4/19.98)#2 or  4 % or from 5.0 to 5.2 mCi -->
+   <!--  Somewhere in this measurement system we are making some errors. We are -->
+   <!--   specifying the deadspace as 0.5 ml when it is at least 0.6 ml. We are also -->
+   <!--   post-counting a large portion of the activity for the 5 mCi injections. -->
+   <!--  Therefore, we will continue to use the WRONG diameter, so that the final -->
+   <!--   delivered dose remains correct. -->
+   <!--  8/13/2002 SC Make this work for C11 injections of DASB over one minute injection -->
+   <!--  -->
+   <!-- diam=="20.4" -->
+   <!-- ds=="0.6"     !8/1/95 -->
+   <!-- ds=="0.5"     !4/20/98 -->
+   <!-- ds=="0.6"     !2001-05-02 -->
+   <config>
+      <diam>19.98</diam>     <!-- 2001-05-02 -->
+      <syringe_name>20 cc Monoject syringe</syringe_name>
+      <dose_warning>40</dose_warning>     <!--  greater than  this dose assayed yields warning -->
+      <minvol_warning>12</minvol_warning>     <!--  get warning if entered vol is  less than  this -->
+      <maxvol_warning>20</maxvol_warning>     <!--  get warning if entered vol is  greater than  this -->
+      <prompt_ds>1</prompt_ds>
+      <kbol>0</kbol>
+      <tbolus>0</tbolus>
+      <tdef>1.0</tdef>
+      <tmin>0.5</tmin>
+      <tmax>3</tmax>
+      <desired_def>0</desired_def>
+      <desired_warning>20</desired_warning>     <!--  greater than  this dose requested yields warning -->
+      <mass_check>1</mass_check>
+      <rmax>15.5</rmax>
+      <time_warning>20</time_warning>     <!--  greater than  this time difference between assay and data entry -->
+      <dec>1</dec>
+      <hl>20.38</hl>
+   </config>
+   <user>
+      <room>nmgeroom2</room>
+      <ds>0.5</ds>      <!-- 2002-08-13 ONly using one extention -->
+      <t>1.0</t>     <!-- 60 sec injection -->
+   </user>
+
+</parms>

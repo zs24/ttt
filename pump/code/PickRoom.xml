@@ -1,0 +1,37 @@
+<rooms>
+   <gepet1>
+      <terminal>128.231.47.16</terminal>
+      <computer>gepet1</computer>
+      <computer>gepet1a</computer>
+      <computer>PET1C470DHRRTW1</computer>
+   </gepet1>
+   <gepet2>
+      <terminal>128.231.47.17</terminal>
+      <computer>gepet2</computer>
+      <computer>gepet2a</computer>
+      <computer>PET1C472HRRTW1</computer>
+   </gepet2>
+   <gepet3>
+      <terminal>128.231.47.18</terminal>
+      <computer>gepet3</computer>
+      <computer>gepet3a</computer>
+      <computer>PET1c476hrrtw</computer>
+   </gepet3>
+   <hrrt>
+      <terminal>128.231.46.16</terminal>
+      <computer>128.231.46.48</computer>  <!-- HRRT recon pc -->
+      <computer>PET15634HRRTW1</computer>  <!-- HRRT extra pc -->
+   </hrrt>
+   <oldlab>
+      <terminal>128.231.47.17</terminal>
+      <computer>islay</computer>
+      <computer>PET1C480HRRTW1</computer>   <!-- old lab pc as seen from ge workstations -->
+      <computer>PET-1C480HRRTW1</computer>  <!-- old lab pc as seen from one of the regular suns -->
+   </oldlab>
+   <newlab>
+      <terminal>128.231.46.18</terminal>
+      <computer>PET115652HRRTW1</computer>
+   </newlab>
+</rooms>
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parms>
+   <config>
+      <mass_check>false</mass_check>
+      <hl>109.8</hl>
+      <desired_min_error>0.0</desired_min_error>
+      <time_warning>20.0</time_warning>
+      <min_ds_rate>15.0</min_ds_rate>
+      <diam>0.0</diam>
+      <dose_min_error>0.0</dose_min_error>
+      <rmax>0.0</rmax>
+      <kbol>0.0</kbol>
+      <prompt_ds>true</prompt_ds>
+      <tbolus>0.0</tbolus>
+   </config>
+   <user>
+      <res_time>12:34:00</res_time>
+      <dose0>7.99</dose0>
+      <vtot>9.0</vtot>
+      <injnum>1</injnum>
+      <t/>
+      <XMLout>/home/gepet3a/operator/nih/pump/log/20060525_123129_Thomas_S_1.xml</XMLout>
+      <id>41-60-94-0</id>
+      <desired>7.0</desired>
+      <time0>12:23:00</time0>
+      <name>Schmucker,Thomas</name>
+      <injtime>12:30:15</injtime>
+      <ds/>
+      <res_dose>0.689</res_dose>
+      <res_vol/>
+   </user>
+   <calc>
+      <res_bolus>6.927051141771225</res_bolus>
+      <dose_diff>-1.0421265461253628</dose_diff>
+      <res_decay>6.927051141771225</res_decay>
+   </calc>
+</parms>

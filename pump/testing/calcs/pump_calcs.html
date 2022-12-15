@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+.style2 {	color: #009900;
+	font-weight: bold;
+	font-size: larger;
+}
+-->
+</style>
+</head>
+
+<body>
+<h1 align="center">Testing Calculations </h1>
+<hr />
+<p>Vax pump program dumps its memory state to disk after every run. These files contain the configuration settings (halflife, syringe diameter, etc), the user input (pre-assay dose, length of infusion, etc) and the infusion parameters (dead space rate, steady state start time, etc) calculated by the vax program at the time. By reading thes files, recalculating the infusion profile and comparing the new results to the old ones, we can get an idea of just how accurate the new program will be. </p>
+<p>There's a java program called <a href="convert.java">convert.java</a> that rshells into the vax and gets a list of every *.bld file in user$disk:[pettech.pump]. These are the vax dump files. For each file in the list, the java program rshells into the vax again to run a program in user$disk:[pettech.source] called <a href="dump_pump_savefiles_to_xml.com">dump_pump_savefiles_to_xml.com</a>. The vax program reads the dump files and writes the information to stdout in something approximating the xml format used by the new java pump program. convert.java captures this i/o stream and writes xml files to the current unix directory. A copy of the full set of <a href="dumpfiles/">xml files</a> can be found here. </p>
+<p>A separate java program called <a href="compare_vax2java.java">compare_vax2java.java</a> gets a list of every *.xml file. For each file, it makes calls to methods in <a href="PumpParameters.java">PumpParameters.java</a> to read the xml files as if they were typical configuration files and perform the calculations to construct an infusion profile. The vax and java numbers along with %error for dead space time, bolus time, steady state time, dead space rate, bolus rate, steady state rate and predicted dose are then written to a comma delimited ascii text file. PumpParameters is really the thing that's being tested here. This is the actual code that will be doing the calculations in the live pump program. If everything is correct then it should be able to replicate the vax numbers pretty closely. It is supported in this run by two other java classes, <a href="PumpMessages.java">PumpMessages.java</a> and <a href="PumpException.java">PumpException.java</a>. </p>
+<p>There were 491 dump files on the vax. One had to be excluded because it had no injection time. One was excluded because it appeared to be the result of an early form of the vax pump program that improperly handled dead space when the whole syringe had to be infused. Two showed some small descrepancies in the dead space infusion rate (15.5ml/min instead of 15ml/min) because they also seemed to be the product of an early version of the vax pump program that handles rmax differently than we do today. <span class="style2">The remaining 487 vax pump runs agreed exactly with the <a href="validate.csv">results</a> of the new java program. </span></p>
+</body>
+</html>

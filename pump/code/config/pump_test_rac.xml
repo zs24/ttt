@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parms>
+   <!-- pump_rac.com -->
+   <!--  drive file for raclopride in the ge -->
+   <!--  changed to no dead space per rc on 1/23/96 - sg -->
+   <!--  -->
+   <!--   diam=="20.4"     ! monoject 5/10/96 -->
+   <!--   corrected 3/10/99 -->
+   <!-- kbol=="135" -->
+   <config>
+      <diam>20.4</diam>     <!--  monoject -->
+      <syringe_name>20 cc Monoject syringe</syringe_name>
+      <dose_warning>80</dose_warning>     <!--  greater than  this dose assayed yields warning -->
+      <minvol_warning>12</minvol_warning>     <!--  get warning if entered vol is  less than  this -->
+      <maxvol_warning>20</maxvol_warning>     <!--  get warning if entered vol is  greater than  this -->
+      <dsdef>.5</dsdef>
+      <prompt_ds>1</prompt_ds>
+      <kbol>105</kbol>     <!-- new value 2000-04-05 -->
+      <tbolus>1</tbolus>
+      <tdef>100</tdef>
+      <tmin>90</tmin>
+      <tmax>130</tmax>
+      <desired_def>20</desired_def>
+      <desired_warning>20.5</desired_warning>     <!--  greater than  this dose requested yields warning -->
+      <mass_check>1</mass_check>
+      <rmax>15.5</rmax>     <!-- max speeed for this diameter -->
+      <time_warning>20</time_warning>     <!--  greater than  this time difference between assay and data entry -->
+      <dec>1</dec>
+      <hl>20.38</hl>
+   </config>
+   <user>
+      <room>nmgeroom2</room>
+      <ds>.5</ds>
+      <t>100</t>
+   </user>
+
+</parms>

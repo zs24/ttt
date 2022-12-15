@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<parms>
+   <config>
+      <diam>-99</diam>
+      <rmax>15.5</rmax>
+      <tbolus>0</tbolus>
+      <hl>9.98</hl>
+      <tdef>-99</tdef>
+      <tmin>-99</tmin>
+      <tmax>-99</tmax>
+      <kbol>0</kbol>
+      <prompt_ds>-99</prompt_ds>
+      <mass_check>0</mass_check>
+      <inject_all_dose>-99</inject_all_dose>
+      <desired_def>-99</desired_def>
+      <desired_warning>-99</desired_warning>
+      <dose_warning>-99</dose_warning>
+      <time_warning>-99</time_warning>
+      <minvol_warning>-99</minvol_warning>
+      <maxvol_warning>-99</maxvol_warning>
+   </config>
+   <user>
+      <ds>.6</ds>
+      <t>2</t>
+      <desired>5</desired>
+      <dose0>12</dose0>
+      <time0>8:0:0</time0>
+      <vtot>12</vtot>
+      <max_vol_mass>-99</max_vol_mass>
+      <systime>8:9:19</systime>
+Index 1 of variable INJTIME is out of range
+Previous command "%type "      <injtime>''injtime(1)':''injtime(2)':''injtime(3)'</injtime>""
+(line   71 of file SYS$INPUT:.;)
+Non-interactive BLD session exits on error
+%SYSTEM-F-ABORT, abort
+  PETTECH      job terminated at 18-JAN-2006 09:11:40.27
+
+  Accounting information:
+  Buffered I/O count:             185         Peak working set size:    1150
+  Direct I/O count:                16         Peak page file size:    148276
+  Page faults:                   8736         Mounted volumes:             0
+  Charged CPU time:           0 00:00:01.47   Elapsed time:     0 00:00:02.05

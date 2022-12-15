@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parms>
+   <!--  drive file for testge -->
+   <!--  -->
+   <config>
+      <diam>20.4</diam>
+      <syringe_name>20 cc Monoject syringe</syringe_name>
+      <dose_warning>40</dose_warning>     <!--  greater than  this dose assayed yields warning -->
+      <minvol_warning>12</minvol_warning>     <!--  get warning if entered vol is  less than  this -->
+      <maxvol_warning>20</maxvol_warning>     <!--  get warning if entered vol is  greater than  this -->
+      <dsdef>.6</dsdef>
+      <kbol>0</kbol>
+      <tbolus>0</tbolus>
+      <tdef>1</tdef>
+      <tmin>1</tmin>
+      <tmax>1</tmax>
+      <desired_def>5</desired_def>
+      <desired_warning>5</desired_warning>     <!--  greater than  this dose requested yields warning -->
+      <rmax>15.5</rmax>
+      <time_warning>20</time_warning>     <!--  greater than  this time difference between assay and data entry -->
+      <dec>1</dec>
+      <hl>9.98</hl>
+   </config>
+   <user>
+      <room>nmge3pump1</room>
+      <ds>0.6</ds>
+      <t>1</t>
+      <dose0>20</dose0>
+      <time0>current</time0>
+      <vtot>20</vtot>
+   </user>
+
+</parms>

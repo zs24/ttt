@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>pump control</title>
+</head>
+
+<body>
+ <h1 align="center">Testing Pump Control</h1>
+ <hr>
+ <p>The harvard pumps can report the volume they think they've just infused.&nbsp; The
+    volume the pump should have infused can be calculated given a particular
+    profile.&nbsp; The difference between these two numbers can be used as an
+ indicator of just how well the software is controlling the pump activity.&nbsp;</p>
+ <p>Wrote a couple batch scripts to run a series of infusions to test how the
+    control software performed under various conditions.&nbsp; The vax program
+    pump_play_loop.com is a wrapper that hands a series of infusion profiles
+    to pump_play.com one at a time.&nbsp; pump_play.com was built up from all
+    the important bits from of the real vax pump programs (pump.com and pump_bld.com)
+    that drive the pumps but none of the parts that create infusion profiles.&nbsp; Similarly,
+    pump_play.pl hands a series of infusion profiles to the perl subroutine that
+ will drive the pumps.&nbsp;</p>
+ <p>Each test was a three phase infusion with a slow phase (5ml/min), a fast
+    phase (25ml/min) and a phase where the infusion rate was incremented from
+    1ml/min to 25ml/min.&nbsp; These were tried in every combination
+    with the control software in a number of different configurations.&nbsp;</p>
+ <p>The full results can be found in the <a href="../pump_volume_retest.xls">volume
+       test spreadsheet</a>.&nbsp; Summary graphs are shown below.&nbsp; Positive
+       values mean the patient did not get the full dose.&nbsp; In all cases,
+       the error fell between +/- 0.15 ml.&nbsp; </p>
+ <p>The vax charts show the old vax pump control software in its default state.&nbsp; The
+    positive slopes suggest the final phase may be cut short by a few tenths
+    of a second.&nbsp; The negative sloops, on the other hand, may mean the final
+    phase run a little longer than it should in a couple cases.&nbsp; The discontinuities
+    suggest the pump has some extra (possibly mechanical) overhead in switching
+    between certain speeds.&nbsp; </p>
+ <p>The baseline charts show the new unix-based control software in its default
+    state.&nbsp; Start time is taken just before the run command is issued.&nbsp; The
+    program loops something like 200,000 times a second checking the time and
+    writing progress reports every second or so.&nbsp; At the appropriate times,
+    it issues a change speed or a stop command.&nbsp; The general shapes of the
+    curves and the magnitude of the errors are both comperable to the vax trials
+    with two exceptions.&nbsp; The unix program doesn't have negative slopes
+    which means they don't over infuse as the vax program does in some situations.&nbsp; The
+    unix unix program also don't have as many negative datapoints which means,
+    again, they don't over infuse as much as the vax program sometimes does.&nbsp; So
+    the performance of the new unix-based control software is no worse and probably
+    a little better than the old vax program.&nbsp; </p>
+ <p>Still. things could be better.&nbsp; Experimented with the possibility of
+    adding a bogus speed change just before the final stop command to add some
+    time back to the 3rd phase which seemed to be getting cut off a little prematurely.&nbsp; Tried
+    setting the speed to 1ml/min in all cases.&nbsp; Tried setting the speed
+    to whatever had been the 3rd phase speed had been.&nbsp; The best solution
+    it seemed was setting the speed to 1ml/min if the 3rd phase speed had been
+    less than 15ml/min or 15ml/min otherwise.&nbsp; Remember, the charts showed
+    a step change at 15ml/min.&nbsp; This flattened the curves nicely and brought
+    the total error to within +/- 0.05ml.&nbsp; Take a look a the 'mlm delay
+    before stop' charts.&nbsp; (mlm is the protocol 22 pump command for a speed
+    change.)&nbsp; However, it was found that different pumps have different
+    break points which can't be determined by the program.&nbsp; Given the default
+    state worked so well, it was decided not to implement this trick.</p>
+ <p>Also toyed with the idea of giving the pump a target volume at which it could
+    stop itself.&nbsp; This worked very well.&nbsp; The differences between the
+    intended volume and the volume the pump believed it infused fell to almost
+    zero.&nbsp; The trouble was that this method corrected for the total volume
+    not for the volume in each individual phase.&nbsp; The 3rd phase would be
+    over or under infused to correct for problems that may have happened in the
+    1st or 2nd phases.&nbsp; So it was decided not to implement this trick either.&nbsp; </p>
+ <p>Started playing with programmable pumps.&nbsp; They could be given a infusion
+    rate and a target volume for each phase before the infusion began.&nbsp; The
+    results were a little disappointing.&nbsp; See the 'programmable' chart series. &nbsp; Despite
+    all the extra electronics, the results exactly mirrored the unix baseline.&nbsp; The
+    final phase was still getting cut short.&nbsp; Turns out there was a reason.&nbsp; For
+    saftey, the pump was given a redundant stop command when the code believed
+    the infusion was over.&nbsp; The programmable pumps are supposed to be able
+    to stop themselves but you never know something could happen.&nbsp; Don't
+    want the pump to be left running indefinately.&nbsp; In any case, the code
+    decided the infusion was over based on absolute time down to the millisecond.&nbsp; The
+    programmable pumps account for the delay of maybe 0.05 seconds as the pump
+    changes speed between phases.&nbsp; The stopwatch did not.&nbsp; So the 3rd
+    phase of the first set of trials of the new programmable pumps was cut short
+    in exactly the same way it had been on the baseline tests.&nbsp; </p>
+ <p>Tried adding a one second delay just before the safety stop.&nbsp; That allowed
+    the programmable pump time to add the few tenths of a second needed to correct
+    for the delays inherent in speed changes to the end of the 3rd phase.&nbsp; The
+    results were very,very good.&nbsp; The discrepancies between the intended
+    volume and the volume the pump believed it infused were knocked down substantially.&nbsp; The
+    worst error was a 0.004ml over infusion.&nbsp; </p>
+ <p>Of course, the programmable pumps have other advantages aside from high precision.&nbsp; The
+    connection between the pump and the program is no longer critical.&nbsp; Now
+    that the pump knows for itself when to change speeds and when stop the infusion,
+    the program doesn't have to tell it.&nbsp; If someone trips over a wire or
+    the terminal server melts-down or the network crashes, its a problem but
+    not a crisis.&nbsp; The infusion will still continue as programmed.&nbsp; Also,
+    the load on the host cpu is reduced.&nbsp; Without a programmable pump the
+    software has to constantly check the system clock to see if its time for
+    the next action.&nbsp; As the program is currently setup, that happens as
+    fast as the program can iterate the relevant loop which is about 200,000
+    a second.&nbsp; Even a simple task like checking the time can start to bog
+    the system down when its run 200,000 a second.&nbsp; Small sleep intervals
+    in the loop could slow things down to something more reasonable but the system
+    doesn't seem capable of any sleeps shorter than 0.1 seconds which slows things
+    down way to much.&nbsp; With a programmable pump, the software doesn't have
+    to check the time at all.&nbsp; So no drag on the system.&nbsp; </p>
+ <p>To complete the tests in a timely manner, most of the them ran with total
+    infusion duration of 4.5 seconds.&nbsp; To check for any bias this might
+    have caused, the baseline and the programmable test with the 1 second delay
+    were run with 180 second durations. At some of the faster speeds this corresponded
+    to total infusion volumes over 50ml which is well in excess of our standard
+    20ml syringe and therefore well in excess of anything the program may encounter
+    in actual use.&nbsp; The results were very similar to the original 4.5 second
+    charts.&nbsp; </p>
+ <table width="0" border="1">
+    <tr>
+       <th nowrap scope="row">1st phase 5ml/min<br>
+         2nd phase 25ml/min<br>
+         3rd phase variable</th>
+       <td><img src="../graphs/pump_vol_retest_9993_image006.gif" width="491" height="245"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image005.gif" width="490" height="244"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image001.gif" width="492" height="246"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image002.gif" width="492" height="246"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image004.gif" width="494" height="248"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image007.gif" width="495" height="249"></td>
+    </tr>
+    <tr>
+       <th nowrap scope="row">1st phase 25ml/min<br>
+         2nd phase 5ml/min<br>
+         3rd phase variable</th>
+       <td><img src="../graphs/pump_vol_retest_9993_image013.gif" width="492" height="245"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image009.gif" width="491" height="245"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image014.gif" width="493" height="246"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image010.gif" width="493" height="247"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image012.gif" width="495" height="249"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image015.gif" width="496" height="250"></td>
+    </tr>
+    <tr>
+       <th nowrap scope="row">1st phase 5ml/min<br>
+         2nd phase variable<br>
+         3rd phase 25ml/min </th>
+       <td><img src="../graphs/pump_vol_retest_9993_image018.gif" width="493" height="247"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image017.gif" width="490" height="246"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image023.gif" width="494" height="248"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image019.gif" width="494" height="248"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image021.gif" width="496" height="250"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image022.gif" width="497" height="251"></td>
+    </tr>
+    <tr>
+       <th nowrap scope="row">1st phase 25ml/min<br>
+         2nd phase variable<br>
+         3rd phase 5ml/min</th>
+       <td><img src="../graphs/pump_vol_retest_9993_image026.gif" width="495" height="249"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image025.gif" width="494" height="248"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image027.gif" width="496" height="250"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image030.gif" width="495" height="249"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image029.gif" width="497" height="251"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image031.gif" width="498" height="252"></td>
+    </tr>
+    <tr>
+       <th nowrap scope="row">1st phase variable<br>
+         2nd phase 5ml/min<br>
+         3rd phase 25ml/min</th>
+       <td><img src="../graphs/pump_vol_retest_9993_image034.gif" width="497" height="251"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image033.gif" width="496" height="250"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image035.gif" width="498" height="252"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image036.gif" width="496" height="250"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image038.gif" width="498" height="252"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image039.gif" width="499" height="253"></td>
+    </tr>
+    <tr>
+       <th nowrap scope="row">1st phase variable<br>
+         2nd phase 25ml/min<br>
+         3rd phase 5ml/min</th>
+       <td><img src="../graphs/pump_vol_retest_9993_image042.gif" width="499" height="253"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image041.gif" width="498" height="252"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image043.gif" width="500" height="254"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image046.gif" width="497" height="251"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image045.gif" width="499" height="253"></td>
+       <td><img src="../graphs/pump_vol_retest_9993_image047.gif" width="500" height="254"></td>
+    </tr>
+ </table>
+ <p>&nbsp;</p>
+</body>
+</html>

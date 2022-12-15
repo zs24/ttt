@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parms>
+   <config>
+      <mass_check>false</mass_check>
+      <hl>109.8</hl>
+      <desired_min_error>0.0</desired_min_error>
+      <time_warning>20.0</time_warning>
+      <min_ds_rate>15.0</min_ds_rate>
+      <diam>0.0</diam>
+      <dose_min_error>0.0</dose_min_error>
+      <rmax>0.0</rmax>
+      <kbol>0.0</kbol>
+      <prompt_ds>true</prompt_ds>
+      <tbolus>0.0</tbolus>
+   </config>
+   <user>
+      <res_time>12:38:00</res_time>
+      <dose0>16.58</dose0>
+      <vtot>9.0</vtot>
+      <injnum>2</injnum>
+      <t/>
+      <XMLout>/home/gepet3a/operator/nih/pump/log/20060502_123916_Stephen_B_2.xml</XMLout>
+      <id>13-62-83-5</id>
+      <desired>15.0</desired>
+      <time0>12:33:00</time0>
+      <name>Bullock,Stephen</name>
+      <injtime>12:35:52</injtime>
+      <ds/>
+      <res_dose>0.879</res_dose>
+   </user>
+   <calc>
+      <res_bolus>15.391736813106188</res_bolus>
+      <dose_diff>2.6115787540412563</dose_diff>
+      <res_decay>15.391736813106188</res_decay>
+   </calc>
+</parms>
